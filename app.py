@@ -34,7 +34,7 @@ COMPANY = {
 LESSON_INFO = {
     'title': 'Introduction to AI Vision with Python',
     'topics': ['Face tracking', 'Hand tracking', 'Body tracking', 'Object tracking'],
-    'price_usd': 50,
+    'price_usd': 80,
     'age_min': 12,
     'age_max': 18,
     'requirements': ['Computer with webcam', 'Python 3.8+', 'Google Chrome or Firefox', 'Basic Python knowledge'],
