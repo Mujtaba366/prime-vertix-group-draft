@@ -1,6 +1,6 @@
-# Prime Vertix Group — Lessons Site (Flask)
+# Prime Vertex Group — Lessons Site (Flask)
 
-Minimal Flask site scaffold for Prime Vertix Group. Features:
+Minimal Flask site scaffold for Prime Vertex Group. Features:
 
 - Public pages: Home, Lessons, Register
 - Stripe Checkout integration for payments

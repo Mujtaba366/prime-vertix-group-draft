@@ -31,7 +31,7 @@ if SUPABASE_URL and SUPABASE_KEY:
     supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 COMPANY = {
-    'name': 'Prime Vertix Group',
+    'name': 'Prime Vertex Group',
     'members': [
         {'name': 'Aziza Mosavi', 'role': 'Owner'},
         {'name': 'Sayed Dawood Mosavi', 'role': 'CEO'},
@@ -266,7 +266,7 @@ def handle_contact():
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
       {f'<img src="{logo_url}" alt="logo" style="width:80px;border-radius:8px;">' if logo_url else ''}
       <div>
-        <strong>Prime Vertix Group</strong><br/>
+        <strong>Prime Vertex Group</strong><br/>
         <small>New contact submission</small>
       </div>
     </div>
@@ -306,7 +306,7 @@ def handle_enrol():
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
       {f'<img src="{logo_url}" alt="logo" style="width:80px;border-radius:8px;">' if logo_url else ''}
       <div>
-        <strong>Prime Vertix Group</strong><br/>
+        <strong>Prime Vertex Group</strong><br/>
         <small>New enrolment submission</small>
       </div>
     </div>
