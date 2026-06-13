@@ -17,11 +17,6 @@ SUPABASE_KEY = os.getenv('SUPABASE_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
 
-# SMTP / Email settings — edit these in your environment or .env
-# Example .env entries:
-# EMAIL_SENDER=youremail@gmail.com
-# EMAIL_APP_PASSWORD=abcd efgh ijkl mnop
-# CONTACT_RECIPIENT=recipient@example.com  # optional, defaults to EMAIL_SENDER
 EMAIL_SENDER = os.getenv('EMAIL_SENDER')
 EMAIL_APP_PASSWORD = os.getenv('EMAIL_APP_PASSWORD')
 CONTACT_RECIPIENT = os.getenv('CONTACT_RECIPIENT') or EMAIL_SENDER
@@ -145,7 +140,6 @@ sessions = [
   { "num": 7, "date": 'Sun, 02 Aug 2026' },
   { "num": 8, "date": 'Sun, 09 Aug 2026' },
 ]
-
 topics = [
   'Introduction to Python for AI applications',
   'Computer Vision fundamentals with OpenCV',
@@ -227,13 +221,11 @@ def index():
     current_year=datetime.now().year,
   )
 
-
 def _build_logo_url():
   try:
     return url_for('static', filename='logo.jpeg', _external=True)
   except RuntimeError:
     return ''
-
 
 def send_email(subject: str, html_body: str, plain_body: str = '', to_address: str = None):
   """Send an email using SMTP_SSL. Requires EMAIL_SENDER and EMAIL_APP_PASSWORD set in env.
@@ -259,7 +251,6 @@ def send_email(subject: str, html_body: str, plain_body: str = '', to_address: s
   with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
     server.login(EMAIL_SENDER, EMAIL_APP_PASSWORD)
     server.sendmail(EMAIL_SENDER, to_address, msg.as_string())
-
 
 @app.route('/contact', methods=['POST'])
 def handle_contact():
@@ -296,7 +287,6 @@ def handle_contact():
     print('Error sending contact email:', e)
     flash('There was an error sending your message. Please try again later.', 'error')
   return redirect(url_for('index') + '#contact')
-
 
 @app.route('/enrol', methods=['POST'])
 def handle_enrol():
@@ -335,4 +325,3 @@ def handle_enrol():
     print('Error sending enrolment email:', e)
     flash('There was an error submitting your enrolment. Please try again later.', 'error')
   return redirect(url_for('index') + '#course')
-
