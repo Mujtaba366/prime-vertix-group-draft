@@ -1,7 +1,11 @@
 import os
 from datetime import datetime
 import re
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
+import smtplib
+import ssl
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from dotenv import load_dotenv
 import stripe
 from supabase import create_client
@@ -12,6 +16,15 @@ SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+
+# SMTP / Email settings — edit these in your environment or .env
+# Example .env entries:
+# EMAIL_SENDER=youremail@gmail.com
+# EMAIL_APP_PASSWORD=abcd efgh ijkl mnop
+# CONTACT_RECIPIENT=recipient@example.com  # optional, defaults to EMAIL_SENDER
+EMAIL_SENDER = os.getenv('EMAIL_SENDER')
+EMAIL_APP_PASSWORD = os.getenv('EMAIL_APP_PASSWORD')
+CONTACT_RECIPIENT = os.getenv('CONTACT_RECIPIENT') or EMAIL_SENDER
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'change-me')
@@ -213,4 +226,113 @@ def index():
     links=links,
     current_year=datetime.now().year,
   )
+
+
+def _build_logo_url():
+  try:
+    return url_for('static', filename='logo.jpeg', _external=True)
+  except RuntimeError:
+    return ''
+
+
+def send_email(subject: str, html_body: str, plain_body: str = '', to_address: str = None):
+  """Send an email using SMTP_SSL. Requires EMAIL_SENDER and EMAIL_APP_PASSWORD set in env.
+  """
+  if not EMAIL_SENDER or not EMAIL_APP_PASSWORD:
+    raise RuntimeError('EMAIL_SENDER and EMAIL_APP_PASSWORD must be configured in environment')
+  if not to_address:
+    to_address = CONTACT_RECIPIENT
+
+  msg = MIMEMultipart('alternative')
+  msg['Subject'] = subject
+  msg['From'] = EMAIL_SENDER
+  msg['To'] = to_address
+
+  if plain_body:
+    part1 = MIMEText(plain_body, 'plain')
+    msg.attach(part1)
+
+  part2 = MIMEText(html_body, 'html')
+  msg.attach(part2)
+
+  context = ssl.create_default_context()
+  with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
+    server.login(EMAIL_SENDER, EMAIL_APP_PASSWORD)
+    server.sendmail(EMAIL_SENDER, to_address, msg.as_string())
+
+
+@app.route('/contact', methods=['POST'])
+def handle_contact():
+  # expected form fields: name, email, subject, message
+  name = request.form.get('name') or 'Website visitor'
+  email = request.form.get('email') or 'noreply'
+  subject_field = request.form.get('subject') or 'New contact'
+  message = request.form.get('message') or ''
+
+  subject = f"Contact: {subject_field} — {name}"
+  logo_url = _build_logo_url()
+  html_body = f"""
+  <div style="font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff;padding:18px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      {f'<img src="{logo_url}" alt="logo" style="width:80px;border-radius:8px;">' if logo_url else ''}
+      <div>
+        <strong>Prime Vertix Group</strong><br/>
+        <small>New contact submission</small>
+      </div>
+    </div>
+    <h3 style="margin:6px 0 12px 0;color:#0f172a;">{subject_field}</h3>
+    <p><strong>Name:</strong> {name}</p>
+    <p><strong>Email:</strong> {email}</p>
+    <p><strong>Message:</strong><br/>{message.replace('\n','<br/>')}</p>
+    <hr/>
+    <p style="font-size:12px;color:#6b7280;">Sent from the website on {datetime.utcnow().isoformat()} UTC</p>
+  </div>
+  """
+  plain = f"{subject}\nFrom: {name} <{email}>\n\n{message}"
+  try:
+    send_email(subject, html_body, plain)
+    flash('Message sent — we will get back to you shortly.', 'success')
+  except Exception as e:
+    print('Error sending contact email:', e)
+    flash('There was an error sending your message. Please try again later.', 'error')
+  return redirect(url_for('index') + '#contact')
+
+
+@app.route('/enrol', methods=['POST'])
+def handle_enrol():
+  # expected form fields depend on your enrol form — we'll capture generically
+  full_name = request.form.get('full_name') or request.form.get('name') or 'Applicant'
+  email = request.form.get('email') or ''
+  phone = request.form.get('phone') or ''
+  selected_session = request.form.get('session') or request.form.get('selected_session') or ''
+  extra = '\n'.join([f"{k}: {v}" for k, v in request.form.items() if k not in ('full_name','name','email','phone','session','selected_session')])
+
+  subject = f"New enrolment — {full_name}"
+  logo_url = _build_logo_url()
+  html_body = f"""
+  <div style="font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff;padding:18px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      {f'<img src="{logo_url}" alt="logo" style="width:80px;border-radius:8px;">' if logo_url else ''}
+      <div>
+        <strong>Prime Vertix Group</strong><br/>
+        <small>New enrolment submission</small>
+      </div>
+    </div>
+    <p><strong>Name:</strong> {full_name}</p>
+    <p><strong>Email:</strong> {email}</p>
+    <p><strong>Phone:</strong> {phone}</p>
+    <p><strong>Selected session:</strong> {selected_session}</p>
+    <p><strong>Additional info:</strong><br/>{extra.replace('\n','<br/>')}</p>
+    <hr/>
+    <p style="font-size:12px;color:#6b7280;">Sent from the website on {datetime.utcnow().isoformat()} UTC</p>
+  </div>
+  """
+  plain = f"{subject}\nName: {full_name}\nEmail: {email}\nPhone: {phone}\nSession: {selected_session}\n\n{extra}"
+  try:
+    send_email(subject, html_body, plain)
+    flash('Enrolment submitted — we will contact you with next steps.', 'success')
+  except Exception as e:
+    print('Error sending enrolment email:', e)
+    flash('There was an error submitting your enrolment. Please try again later.', 'error')
+  return redirect(url_for('index') + '#course')
 
