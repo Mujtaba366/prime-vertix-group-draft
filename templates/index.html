@@ -556,7 +556,6 @@
                   <div class="text-slate-500 text-xs mt-0.5">Auckland, New Zealand</div>
                 </div>
               </div>
-
               <div class="flex items-start gap-4 bg-white/3 border border-white/8 rounded-xl p-5">
                 <div class="w-10 h-10 rounded-xl bg-brand-500/15 flex items-center justify-center flex-shrink-0">
                     <svg class="text-brand-400 w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8.5v7A2.5 2.5 0 0 0 5.5 18h13A2.5 2.5 0 0 0 21 15.5v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 8.5L12 13 3 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -567,7 +566,6 @@
                   <div class="text-slate-500 text-xs mt-0.5">We'll respond within 24 hours</div>
                 </div>
               </div>
-
               <div class="flex items-start gap-4 bg-white/3 border border-white/8 rounded-xl p-5">
                 <div class="w-10 h-10 rounded-xl bg-brand-500/15 flex items-center justify-center flex-shrink-0">
                     <svg class="text-brand-400 w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.07.76 3.03a2 2 0 0 1-.45 2.11L9.91 11.09a16 16 0 0 0 6 6l1.23-1.23a2 2 0 0 1 2.11-.45c.96.38 1.98.64 3.03.76A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -606,13 +604,18 @@
                 </div>
                 <div>
                   <label class="block text-slate-400 text-xs font-medium uppercase tracking-wide mb-1.5">Subject</label>
-                  <select name="subject" required class="w-full bg-white/5 border border-white/10 focus:border-brand-500/60 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors appearance-none">
-                    <option value="">Select a subject...</option>
-                    <option value="enrol">Course Enrolment</option>
-                    <option value="info">Course Information</option>
-                    <option value="partnership">Partnership Enquiry</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <div class="relative">
+                    <select name="subject" required class="w-full bg-slate-900/95 border border-white/10 focus:border-brand-500/70 rounded-xl px-4 py-3 text-slate-100 text-sm outline-none transition-colors hover:bg-slate-800/95 appearance-none">
+                      <option value="" class="text-slate-400">Select a subject...</option>
+                      <option value="enrol">Course Enrolment</option>
+                      <option value="info">Course Information</option>
+                      <option value="partnership">Partnership Enquiry</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                  </div>
                 </div>
                 <div>
                   <label class="block text-slate-400 text-xs font-medium uppercase tracking-wide mb-1.5">Message</label>
@@ -753,9 +756,7 @@
                 <div class="text-brand-400 text-xs font-medium tracking-widest uppercase">Technology Education</div>
               </div>
             </div>
-
             <p class="text-slate-400 text-sm leading-relaxed max-w-sm">Empowering the next generation of innovators through cutting-edge technology education and digital solutions. Based in New Zealand.</p>
-
             <div class="space-y-2.5">
               <div class="flex items-center gap-3 text-slate-400 text-sm">
                 <i data-lucide="map-pin" class="text-brand-400 w-4 h-4"></i>
