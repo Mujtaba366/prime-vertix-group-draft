@@ -617,7 +617,7 @@
         </div>
       </div>
     </section>
-    <div id="enrolModalOverlay" class="hidden absolute inset-0 z-50 overflow-auto bg-black/70 p-4 backdrop-blur-sm">
+    <div id="enrolModalOverlay" class="hidden fixed inset-0 z-50 overflow-auto bg-black/70 p-4 backdrop-blur-sm">
       <div class="absolute left-1/2 top-10 w-full max-w-4xl -translate-x-1/2 overflow-visible rounded-[2rem] border border-white/10 bg-[#091122] shadow-2xl">
         <button type="button" onclick="hideEnrolModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white text-2xl leading-none">&times;</button>
         <div class="overflow-visible">
@@ -803,12 +803,14 @@
         document.getElementById('enrolModalStep2')?.classList.add('hidden');
         enrolModalOverlay.classList.remove('hidden');
         enrolModalOverlay.classList.add('flex');
+        document.body.style.overflow = 'hidden';
       }
 
       function hideEnrolModal(){
         if(!enrolModalOverlay) return;
         enrolModalOverlay.classList.add('hidden');
         enrolModalOverlay.classList.remove('flex');
+        document.body.style.overflow = '';
       }
 
       function goEnrolStep(step){
