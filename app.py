@@ -214,5 +214,3 @@ def index():
     current_year=datetime.now().year,
   )
 
-if __name__ == '__main__':
-    app.run(debug=True)
