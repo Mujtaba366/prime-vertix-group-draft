@@ -617,11 +617,11 @@
         </div>
       </div>
     </section>
-    <div id="enrolModalOverlay" class="hidden fixed inset-0 z-50 items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-      <div class="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[2rem] border border-white/10 bg-[#091122] shadow-2xl">
+    <div id="enrolModalOverlay" class="hidden absolute inset-0 z-50 overflow-auto bg-black/70 p-4 backdrop-blur-sm">
+      <div class="absolute left-1/2 top-10 w-full max-w-4xl -translate-x-1/2 overflow-visible rounded-[2rem] border border-white/10 bg-[#091122] shadow-2xl">
         <button type="button" onclick="hideEnrolModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white text-2xl leading-none">&times;</button>
-        <div class="flex h-full flex-col overflow-hidden">
-          <div class="flex-1 min-h-0 overflow-y-auto p-8">
+        <div class="overflow-visible">
+          <div class="p-8 overflow-visible">
           <div class="flex items-center gap-4 border-b border-white/10 pb-6 mb-6">
             <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Prime Vertix logo" class="w-16 h-16 rounded-2xl bg-white/5 p-3 object-contain" />
             <div>
@@ -658,7 +658,6 @@
                   <input type="email" name="student_email" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
                 </div>
               </div>
-
               <div class="mt-8 border-t border-white/10 pt-6">
                 <div class="text-white text-lg font-semibold mb-4">Parent / Guardian Information</div>
                 <div class="grid gap-4 md:grid-cols-2">
@@ -688,7 +687,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="mt-8 grid gap-4 md:grid-cols-3">
                 <div class="md:col-span-2">
                   <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Membership Fee</div>
@@ -703,7 +701,6 @@
                   <input type="date" id="signatureDate" name="signature_date" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
                 </div>
               </div>
-
               <div class="mt-8 flex justify-end gap-3">
                 <button type="button" onclick="hideEnrolModal()" class="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Cancel</button>
                 <button type="submit" class="rounded-2xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Next</button>
