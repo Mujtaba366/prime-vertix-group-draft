@@ -36,6 +36,17 @@
     </style>
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="fixed top-20 left-1/2 -translate-x-1/2 z-40 space-y-2">
+          {% for category, message in messages %}
+            <div class="px-6 py-3 rounded-lg text-sm font-medium shadow-lg backdrop-blur-sm {% if category == 'success' %}bg-emerald-600 text-white{% else %}bg-red-600 text-white{% endif %} animate-fade-in">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
     <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-800/75 backdrop-blur-sm shadow-lg shadow-black/15 border-b border-white/5">
         <nav class="max-w-7xl mx-auto px-6 lg:px-8 h-18 flex items-center justify-between py-4">
             <a
@@ -630,7 +641,7 @@
             </div>
           </div>
 
-          <form id="enrolForm" onsubmit="return handleEnrolSubmit(event)">
+          <form id="enrolForm" method="post" action="/enrol" onsubmit="return handleEnrolSubmit(event)">
             <div id="enrolModalStep1">
               <div class="grid gap-4 md:grid-cols-2">
                 <div>
@@ -721,7 +732,7 @@
               </div>
               <div class="mt-6 flex justify-between gap-3">
                 <button type="button" onclick="goEnrolStep(1)" class="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Back</button>
-                <button type="button" onclick="hideEnrolModal()" class="rounded-2xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Finish</button>
+                <button type="submit" class="rounded-2xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Submit Enrolment</button>
               </div>
             </div>
           </form>
@@ -828,7 +839,15 @@
 
       function handleEnrolSubmit(event){
         event.preventDefault();
-        goEnrolStep(2);
+        const step2 = document.getElementById('enrolModalStep2');
+        const step1 = document.getElementById('enrolModalStep1');
+        if(step1?.classList.contains('hidden')){
+          // Step 2: submit the form
+          document.getElementById('enrolForm').submit();
+        } else {
+          // Step 1: go to step 2
+          goEnrolStep(2);
+        }
         return false;
       }
 

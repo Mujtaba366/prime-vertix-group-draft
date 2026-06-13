@@ -14,8 +14,8 @@ load_dotenv()
 
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
-STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+# STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+# STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
 
 EMAIL_SENDER = os.getenv('EMAIL_SENDER')
 EMAIL_APP_PASSWORD = os.getenv('EMAIL_APP_PASSWORD')
@@ -24,7 +24,7 @@ CONTACT_RECIPIENT = os.getenv('CONTACT_RECIPIENT') or EMAIL_SENDER
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'change-me')
 
-stripe.api_key = STRIPE_SECRET_KEY
+# stripe.api_key = STRIPE_SECRET_KEY
 
 supabase = None
 if SUPABASE_URL and SUPABASE_KEY:
@@ -290,12 +290,15 @@ def handle_contact():
 
 @app.route('/enrol', methods=['POST'])
 def handle_enrol():
-  # expected form fields depend on your enrol form — we'll capture generically
-  full_name = request.form.get('full_name') or request.form.get('name') or 'Applicant'
-  email = request.form.get('email') or ''
-  phone = request.form.get('phone') or ''
+  # Extract from student/parent form fields
+  student_first = request.form.get('student_first_name') or ''
+  student_last = request.form.get('student_last_name') or ''
+  full_name = f"{student_first} {student_last}".strip() or request.form.get('name') or 'Applicant'
+  
+  email = request.form.get('student_email') or request.form.get('email') or ''
+  phone = request.form.get('student_cellphone') or request.form.get('phone') or ''
   selected_session = request.form.get('session') or request.form.get('selected_session') or ''
-  extra = '\n'.join([f"{k}: {v}" for k, v in request.form.items() if k not in ('full_name','name','email','phone','session','selected_session')])
+  extra = '\n'.join([f"{k}: {v}" for k, v in request.form.items() if k not in ('full_name','name','email','phone','session','selected_session','student_first_name','student_last_name','student_email','student_cellphone')])
 
   subject = f"New enrolment — {full_name}"
   logo_url = _build_logo_url()
