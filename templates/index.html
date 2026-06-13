@@ -439,7 +439,6 @@
       <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(51,126,255,0.06), transparent);"></div>
       </div>
-
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-2 bg-brand-600/10 border border-brand-600/30 rounded-full px-4 py-1.5 mb-5">
@@ -449,7 +448,6 @@
           <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-5">Future Products & Plans</h2>
           <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">We're building a comprehensive technology education ecosystem. Here's a glimpse of what Prime Vertex Group has in store.</p>
         </div>
-
         <div class="grid lg:grid-cols-3 gap-8">
           {% for p in plans %}
           {% set color = p.color %}
@@ -486,8 +484,7 @@
           {% endif %}
 
           <div class="group relative bg-gradient-to-b {{ bg }} {{ border }} rounded-2xl p-7 transition-all duration-500 card-hover">
-            <div class="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-gradient-to-r from-transparent via-current to-transparent opacity-40 {{ text }}"></div>
-
+            <div class="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-gradient-to-r from-transparent via-current to-transparent opacity-40">{{ text }}</div>
             <div class="flex items-start justify-between mb-5">
               <div class="w-12 h-12 rounded-xl {{ iconBg }} flex items-center justify-center">
                 {% if p.icon == 'book-open' %}
