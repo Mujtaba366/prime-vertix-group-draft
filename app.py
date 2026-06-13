@@ -61,7 +61,6 @@ LESSON_INFO = {
 navLinks = [
   { "label": 'About', "href": '#about' },
   { "label": 'Services', "href": '#services' },
-  { "label": 'Team', "href": '#team' },
   { "label": 'Course', "href": '#course' },
   { "label": 'Future', "href": '#future' },
   { "label": 'Contact', "href": '#contact' },
