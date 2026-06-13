@@ -1,0 +1,13 @@
+Required images for the site (place these in static/):
+
+- logo.png (you already have this — place as static/logo.png)
+- hero.jpg (hero / banner image for homepage)
+- classroom.jpg (photo of the classroom / library room)
+- teacher-sayed.jpg (portrait of Sayed Mujtaba Mosavi)
+- teacher-aziza.jpg (portrait of Aziza Mosavi)
+- teacher-sayed-dawood.jpg (portrait of Sayed Dawood Mosavi)
+- schedule.jpg (graphic showing dates)
+- book-placeholder.jpg (cover image for future shop — keep hidden for now)
+
+Optional icons:
+- favicon.ico
