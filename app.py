@@ -35,8 +35,8 @@ LESSON_INFO = {
     'title': 'Introduction to AI Vision with Python',
     'topics': ['Face tracking', 'Hand tracking', 'Body tracking', 'Object tracking'],
     'price_usd': 80,
-    'age_min': 12,
-    'age_max': 18,
+    'age_min': None,
+    'age_max': None,
     'requirements': ['Computer with webcam', 'Python 3.8+', 'Google Chrome or Firefox', 'Basic Python knowledge'],
     'schedule': [
         '21 Jun 2025, 10:00 - 11:00 (Botany Library focus room 21)',
@@ -123,14 +123,14 @@ services = [
   },
 ]
 sessions = [
-  { "num": 1, "date": 'Sat, 21 Jun 2026' },
-  { "num": 2, "date": 'Sat, 28 Jun 2026' },
-  { "num": 3, "date": 'Sat, 05 Jul 2026' },
-  { "num": 4, "date": 'Sat, 12 Jul 2026' },
-  { "num": 5, "date": 'Sat, 19 Jul 2026' },
-  { "num": 6, "date": 'Sat, 26 Jul 2026' },
-  { "num": 7, "date": 'Sat, 02 Aug 2026' },
-  { "num": 8, "date": 'Sat, 09 Aug 2026' },
+  { "num": 1, "date": 'Sun, 21 Jun 2026' },
+  { "num": 2, "date": 'Sun, 28 Jun 2026' },
+  { "num": 3, "date": 'Sun, 05 Jul 2026' },
+  { "num": 4, "date": 'Sun, 12 Jul 2026' },
+  { "num": 5, "date": 'Sun, 19 Jul 2026' },
+  { "num": 6, "date": 'Sun, 26 Jul 2026' },
+  { "num": 7, "date": 'Sun, 02 Aug 2026' },
+  { "num": 8, "date": 'Sun, 09 Aug 2026' },
 ]
 
 topics = [
