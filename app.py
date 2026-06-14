@@ -222,7 +222,7 @@ def index():
 
 def _build_logo_url():
   try:
-    return url_for('static', filename='logo.jpeg', _external=True)
+    return url_for('static', filename='logo.png', _external=True)
   except RuntimeError:
     return ''
 
