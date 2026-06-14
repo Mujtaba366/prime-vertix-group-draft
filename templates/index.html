@@ -484,7 +484,7 @@
           {% endif %}
 
           <div class="group relative bg-gradient-to-b {{ bg }} {{ border }} rounded-2xl p-7 transition-all duration-500 card-hover">
-            <div class="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-gradient-to-r from-transparent via-current to-transparent opacity-40">{{ text }}</div>
+            <div class="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-gradient-to-r from-transparent via-current to-transparent opacity-40 {{ text }}"></div>
             <div class="flex items-start justify-between mb-5">
               <div class="w-12 h-12 rounded-xl {{ iconBg }} flex items-center justify-center">
                 {% if p.icon == 'book-open' %}
