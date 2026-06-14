@@ -1,0 +1,48 @@
+<section id="services" class="py-28 bg-[#080d1a] relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-brand-900/15 rounded-full blur-3xl"></div>
+        <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(51,126,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(51,126,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 bg-brand-600/10 border border-brand-600/30 rounded-full px-4 py-1.5 mb-5">
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Services</span>
+            </div>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-5">What We Offer</h2>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">From live instructor-led classes to upcoming digital products, our services are designed to develop real skills and lasting knowledge.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for s in services %}
+                {% set featured = (s.featured == 'true') %}
+                <div class="group relative flex flex-col rounded-2xl border transition-all duration-500 card-hover {{ 'bg-gradient-to-b from-brand-900/40 to-slate-900/40 border-brand-700/40 hover:border-brand-500/60' if featured else 'bg-white/3 border-white/8 hover:border-white/18 hover:bg-white/5' }} p-6">
+                    {% if featured %}
+                        <div class="absolute top-0 left-6 -translate-y-1/2 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full shadow-lg">Current Focus</div>
+                    {% endif %}
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center {{ 'bg-brand-500/25 text-brand-300' if featured else 'bg-white/8 text-slate-300' }}">
+                            <i data-lucide="{{ s.icon }}" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full {% if s.badgeColor == 'emerald' %}bg-emerald-600 text-white{% elif s.badgeColor == 'amber' %}bg-amber-500 text-white{% else %}bg-white/8 text-slate-200{% endif %}">{{ s.badge }}</span>
+                    </div>
+                    <h3 class="font-display font-semibold text-white text-base mb-3 leading-snug">{{ s.title }}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">{{ s.desc }}</p>
+                    <div class="mt-5 flex flex-wrap gap-1.5">
+                        {% for tag in s.tags %}
+                            <span class="text-xs text-slate-500 bg-white/5 border border-white/8 rounded-full px-2.5 py-0.5">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="mt-14 p-8 rounded-2xl bg-gradient-to-r from-brand-900/40 to-slate-900/40 border border-brand-700/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+                <h3 class="font-display font-bold text-white text-xl mb-1">Ready to start learning?</h3>
+                <p class="text-slate-400 text-sm">Join our first cohort and develop real AI skills with expert guidance.</p>
+            </div>
+            <button onclick="document.querySelector('#course')?.scrollIntoView({ behavior: 'smooth' })" class="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-brand-500/30">
+                View Course
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+        </div>
+    </div>
+</section>

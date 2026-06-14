@@ -1,0 +1,136 @@
+<section
+    id="hero"
+    class="relative min-h-screen flex flex-col justify-center overflow-hidden bg-slate-950">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brand-800/15 rounded-full blur-3xl animate-pulse-slow animate-delay-300"></div>
+        <div class="absolute top-1/3 right-1/6 w-64 h-64 bg-brand-400/10 rounded-full blur-3xl animate-pulse-slow animate-delay-600"></div>
+        <div
+            class="absolute inset-0 opacity-30"
+            style="backgroundImage: linear-gradient(rgba(51,126,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(51,126,255,0.06) 1px, transparent 1px)
+            backgroundSize '60px 60px'">
+        </div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 pt-40">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-brand-600/10 border border-brand-600/30 rounded-full px-4 py-1.5 animate-fade-up">
+                    <div class="w-2 h-2 bg-brand-400 rounded-full animate-pulse"></div>
+                    <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">
+                        Technology Education & Digital Solutions
+                    </span>
+                </div>
+                <h1 class="font-display text-5xl lg:text-7xl font-bold text-white leading-[1.05] animate-fade-up animate-delay-100">
+                    Empowering the
+                    <span class="text-gradient">Next Generation</span>
+                    of Innovators
+                </h1>
+                <p class="text-slate-400 text-lg lg:text-xl leading-relaxed max-w-lg animate-fade-up animate-delay-200">
+                    Prime Vertex Group equips students and professionals with the skills to thrive in a rapidly evolving digital world through cutting-edge technology education and expert-led programs.
+                </p>
+                <div class="flex flex-wrap gap-4 animate-fade-up animate-delay-300">
+                    <button
+                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-brand-500/30 hover:-translate-y-0.5">
+                        View Featured Course
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button
+                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5">
+                        Learn More
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-8 pt-4 animate-fade-up animate-delay-400">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-display font-bold text-white">3+</span>
+                        <span class="text-slate-400 text-xs font-medium uppercase tracking-wide mt-0.5">Expert Instructors</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-display font-bold text-white">8</span>
+                        <span class="text-slate-400 text-xs font-medium uppercase tracking-wide mt-0.5">Lessons Per Course</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-display font-bold text-white">All Ages</span>
+                        <span class="text-slate-400 text-xs font-medium uppercase tracking-wide mt-0.5">Age Group</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex justify-center lg:justify-end animate-fade-in animate-delay-300">
+                <div class="relative w-full max-w-md animate-float">
+                    <div class="bg-white rounded-3xl p-8 border border-white/10 shadow-2xl">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-28 h-28 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
+                                <img src="{{ url_for('static', filename='logo.png') }}" alt="Prime Vertex logo" class="w-26 h-26 object-contain rounded-lg"/>
+                            </div>
+                            <!--
+                            <div>
+                            <div class="font-display font-bold text-white text-xl">Prime Vertex</div>
+                            <div class="text-brand-400 text-sm font-medium">Group</div>
+                            </div>
+                            -->
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/8 hover:border-white/20 transition-colors">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-brand-500/20 text-brand-400">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5 5l1.5 1.5M18.5 17.5L20 19M5 19l1.5-1.5M18.5 6.5L20 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-800 text-sm font-medium">AI & Machine Learning Education</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/8 hover:border-white/20 transition-colors">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-sky-500/20 text-sky-400">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M2 12h20M12 2c2.5 3 2.5 18 0 20M5 6c3 2 14 2 17 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-800 text-sm font-medium">Digital Solutions & Innovation</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/8 hover:border-white/20 transition-colors">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-500/20 text-amber-400">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-800 text-sm font-medium">Programming for the Future</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-brand-600/10 border border-brand-600/20 rounded-xl">
+                            <div class="text-brand-800 text-xs font-semibold uppercase tracking-widest mb-1">
+                                Now Enrolling
+                            </div>
+                            <div class="text-black font-semibold text-sm">
+                                AI Vision with Python — NZ$80
+                            </div>
+                            <div class="text-slate-400 text-xs mt-0.5">8 sessions starting Jun 21, 2026</div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-4 -right-4 w-20 h-20 rounded-2xl bg-brand-500/10 border border-brand-500/20 backdrop-blur-sm flex items-center justify-center">
+                        <svg class="text-brand-400 w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect x="6" y="6" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/20 backdrop-blur-sm flex items-center justify-center">
+                        <svg class="text-sky-400 w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12h20M12 2c2.5 3 2.5 18 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button
+        type="button"
+        onclick="handleNav('#about')"
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 hover:text-brand-400 transition-colors animate-bounce"
+        aria-label="Scroll to About section">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+</section>

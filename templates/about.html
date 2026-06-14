@@ -1,0 +1,47 @@
+<section id="about" class="py-28 bg-slate-950 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-brand-800/15 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center gap-2 bg-brand-600/10 border border-brand-600/30 rounded-full px-4 py-1.5 mb-5">
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">About Us</span>
+            </div>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-5">Who We Are</h2>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                Prime Vertex Group was founded on the belief that technology education should be inspiring, practical, and future-focused. We bridge the gap between academic learning and the skills the digital world demands.
+            </p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left — story -->
+            <div class="space-y-6">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Technology education" class="w-full h-72 object-cover rounded-2xl shadow-2xl" />
+                    <div class="absolute -bottom-6 -right-6 bg-brand-600 rounded-2xl p-5 shadow-2xl shadow-brand-700/40">
+                        <div class="text-3xl font-display font-bold text-white">NZ$80</div>
+                        <div class="text-brand-300 text-xs font-medium mt-0.5">All 8 Sessions</div>
+                    </div>
+                </div>
+                <div class="mt-10 bg-white/3 border border-white/8 rounded-2xl p-6">
+                    <p class="text-slate-300 leading-relaxed">
+                        Based in New Zealand, we are a passionate team of educators and technologists dedicated to empowering students aged 12–18 with real-world AI and programming skills. Our hands-on approach ensures learners don't just understand theory — they build, experiment, and create.
+                    </p>
+                    <p class="text-slate-400 mt-4 leading-relaxed text-sm">
+                        From our flagship AI Vision with Python course to future educational books and digital products, every initiative we launch is designed with the same core principle: make technology accessible, exciting, and meaningful.
+                    </p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {% for v in values %}
+                    <div class="group bg-white/3 hover:bg-white/6 border border-white/8 hover:border-white/15 rounded-2xl p-6 transition-all duration-300 card-hover">
+                        <div class="w-12 h-12 rounded-xl border flex items-center justify-center mb-4 {% if v.color == 'brand' %}bg-brand-500/20 text-brand-400{% elif v.color == 'sky' %}bg-sky-500/20 text-sky-400{% elif v.color == 'amber' %}bg-amber-500/20 text-amber-400{% elif v.color == 'emerald' %}bg-emerald-500/20 text-emerald-400{% else %}bg-brand-500/20 text-brand-400{% endif %}">
+                            <i data-lucide="{{ v.icon }}" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-display font-semibold text-white text-lg mb-2">{{ v.title }}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">{{ v.desc }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
