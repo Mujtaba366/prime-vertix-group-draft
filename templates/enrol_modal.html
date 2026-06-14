@@ -1,0 +1,112 @@
+<div id="enrolModalOverlay" class="hidden fixed inset-0 z-50 overflow-auto bg-black/70 p-4 backdrop-blur-sm">
+    <div class="absolute left-1/2 top-10 w-full max-w-4xl -translate-x-1/2 overflow-visible rounded-[2rem] border border-white/10 bg-[#091122] shadow-2xl">
+        <button type="button" onclick="hideEnrolModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white text-2xl leading-none">&times;</button>
+        <div class="overflow-visible">
+            <div class="p-8 overflow-visible">
+                <div class="flex items-center gap-4 border-b border-white/10 pb-6 mb-6">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Prime Vertex logo" class="w-28 h-28 rounded-2xl bg-white/5 p-3 object-contain" style="filter:brightness(1.6);" />
+                    <div>
+                        <div class="text-brand-300 text-xs uppercase tracking-[0.25em] font-semibold mb-1">Membership Form</div>
+                        <h2 class="text-3xl font-bold text-white">Course Enrolment</h2>
+                    </div>
+                </div>
+                <form id="enrolForm" method="post" action="/enrol" onsubmit="return handleEnrolSubmit(event)">
+                    <div id="enrolModalStep1">
+                        <div class="grid gap-4 md:grid-cols-2">
+                            <div>
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Student First Name</div>
+                                <input type="text" name="student_first_name" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                            </div>
+                            <div>
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Student Last Name</div>
+                                <input type="text" name="student_last_name" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Student Address</div>
+                                <input type="text" name="student_address" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                            </div>
+                            <div>
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Student Cellphone</div>
+                                <input type="tel" name="student_cellphone" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                            </div>
+                            <div>
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Student Work Phone</div>
+                                <input type="tel" name="student_work_phone" class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Student Email</div>
+                                <input type="email" name="student_email" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                            </div>
+                        </div>
+                        <div class="mt-8 border-t border-white/10 pt-6">
+                            <div class="text-white text-lg font-semibold mb-4">Parent / Guardian Information</div>
+                            <div class="grid gap-4 md:grid-cols-2">
+                                <div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Parent First Name</div>
+                                    <input type="text" name="parent_first_name" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                                </div>
+                                <div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Parent Last Name</div>
+                                    <input type="text" name="parent_last_name" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                                </div>
+                                <div class="md:col-span-2">
+                                    <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Parent Address</div>
+                                    <input type="text" name="parent_address" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                                </div>
+                                <div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Parent Cellphone</div>
+                                    <input type="tel" name="parent_cellphone" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                                </div>
+                                <div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Parent Work Phone</div>
+                                    <input type="tel" name="parent_work_phone" class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                                </div>
+                                <div class="md:col-span-2">
+                                    <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Parent Email</div>
+                                    <input type="email" name="parent_email" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 grid gap-4 md:grid-cols-3">
+                            <div class="md:col-span-2">
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Membership Fee</div>
+                                <div class="rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white">NZ$80</div>
+                            </div>
+                            <div>
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Parent Signature</div>
+                                <input type="text" name="parent_signature" required class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60" placeholder="Parent signature" />
+                            </div>
+                            <div>
+                                <div class="text-slate-400 text-xs uppercase tracking-wide font-semibold mb-2">Date</div>
+                                <input type="date" id="signatureDate" 
+                                name="signature_date" required 
+                                class="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-brand-500/60"/>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-end gap-3">
+                            <button type="button" onclick="hideEnrolModal()" class="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Cancel</button>
+                            <button type="submit" class="rounded-2xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Next</button>
+                        </div>
+                    </div>
+                    <div id="enrolModalStep2" class="hidden">
+                        <div class="rounded-3xl border border-white/10 bg-white/5 p-6 space-y-4 text-slate-300">
+                            <div class="text-brand-300 text-xs uppercase tracking-[0.25em] font-semibold">Payment Instructions</div>
+                            <h3 class="text-2xl font-bold text-white">Send payment to this bank account</h3>
+                            <div class="space-y-3 text-sm">
+                                <div><span class="font-semibold text-white">Account name:</span> Prime Vertex Group</div>
+                                <div><span class="font-semibold text-white">Bank number:</span> 00-0000-0000000-00</div>
+                                <div><span class="font-semibold text-white">Particulars:</span> Prime Vertex Group</div>
+                                <div><span class="font-semibold text-white">Reference:</span> AI vision with python course</div>
+                                <p class="text-slate-400">It might take up to 5 business days for the payment to be processed. Once processed, you will receive a confirmation email.</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex justify-between gap-3">
+                            <button type="button" onclick="goEnrolStep(1)" class="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Back</button>
+                            <button type="submit" class="rounded-2xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Submit Enrolment</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
