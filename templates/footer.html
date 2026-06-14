@@ -30,11 +30,11 @@
             </div>
             {% for group, items in links.items() %}
             <div>
-                <h4 class="font-display font-semibold text-white text-sm uppercase tracking-wider mb-5">{{ group }}</h4>
+                <h4 class="font-display font-semibold text-black text-sm uppercase tracking-wider mb-5">{{ group }}</h4>
                 <ul class="space-y-3">
                     {% for item in items %}
                     <li>
-                    <a href="{{ item.href }}" onclick="handleNav('{{ item.href }}'); return false;" class="text-slate-400 hover:text-white text-sm transition-colors duration-200 inline-block">{{ item.label }}</a>
+                    <a href="{{ item.href }}" onclick="handleNav('{{ item.href }}'); return false;" class="text-gray-600 hover:text-blak text-sm transition-colors duration-200 inline-block">{{ item.label }}</a>
                     </li>
                     {% endfor %}
                 </ul>
