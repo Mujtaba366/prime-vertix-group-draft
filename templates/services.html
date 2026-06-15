@@ -14,9 +14,9 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {% for s in services %}
                 {% set featured = (s.featured == 'true') %}
-                <div class="group relative flex flex-col rounded-2xl border transition-all duration-500 card-hover {{ 'bg-brand-100 border-brand-300 hover:border-brand-400' if featured else 'bg-gray-100 border-gray-300 hover:border-gray-400 hover:bg-gray-150' }} p-6">
+                <div class="group relative flex flex-col rounded-2xl border transition-all duration-500 card-hover {{ 'bg-gray-200 border-brand-300 hover:border-brand-400' if featured else 'bg-gray-100 border-gray-300 hover:border-gray-400 hover:bg-gray-150' }} p-6">
                     {% if featured %}
-                        <div class="absolute top-0 left-6 -translate-y-1/2 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full shadow-lg">Current Focus</div>
+                        <div class="absolute top-0 left-6 -translate-y-1/2 px-3 py-1 bg-gray-200 text-white text-xs font-bold rounded-full shadow-lg">Current Focus</div>
                     {% endif %}
                     <div class="flex items-start justify-between mb-5">
                         <div class="w-12 h-12 rounded-xl flex items-center justify-center {{ 'bg-brand-500/25 text-brand-600' if featured else 'bg-gray-200 text-gray-700' }}">
