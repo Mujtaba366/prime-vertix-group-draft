@@ -51,23 +51,23 @@
                     <div class="absolute bottom-6 left-6"><div class="text-black font-display font-bold text-xl mb-1">8-Week Program</div><div class="text-gray-700 text-sm">Hands-on AI & Computer Vision</div></div>
                 </div>
                 <div>
-                    <h3 class="font-display font-semibold text-white text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="text-brand-400 w-5 h-5"></i> Session Schedule</h3>
+                    <h3 class="font-display font-semibold text-black text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="text-brand-400 w-5 h-5"></i> Session Schedule</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {% for date in lesson.schedule %}
-                            <div class="bg-white/3 border border-white/8 hover:border-brand-600/40 hover:bg-brand-900/20 rounded-xl p-3 text-center transition-all duration-200">
+                            <div class="bg-white border border-white/8 hover:border-brand-600/40 hover:bg-brand-900/20 rounded-xl p-3 text-center transition-all duration-200">
                                 <div class="text-brand-400 text-xs font-bold uppercase tracking-wider mb-1">Session {{ loop.index }}</div>
-                                <div class="text-white text-xs font-medium leading-snug">{{ date }}</div>
+                                <div class="text-black text-xs font-medium leading-snug">{{ date }}</div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
                 <div>
-                    <h3 class="font-display font-semibold text-white text-lg mb-4 flex items-center gap-2"><i data-lucide="check-circle" class="text-emerald-400 w-5 h-5"></i> What You'll Learn</h3>
+                    <h3 class="font-display font-semibold text-black text-lg mb-4 flex items-center gap-2"><i data-lucide="check-circle" class="text-emerald-400 w-5 h-5"></i> What You'll Learn</h3>
                     <div class="grid sm:grid-cols-2 gap-2.5">
                         {% for topic in lesson.topics %}
                             <div class="flex items-start gap-3 bg-white/3 border border-white/8 rounded-xl px-4 py-3">
                                 <i data-lucide="check-circle" class="text-emerald-400 w-4 h-4 flex-shrink-0 mt-0.5"></i>
-                                <span class="text-slate-300 text-sm">{{ topic }}</span>
+                                <span class="text-gray-700 text-sm">{{ topic }}</span>
                             </div>
                         {% endfor %}
                     </div>
